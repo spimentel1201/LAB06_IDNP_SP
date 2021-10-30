@@ -10,7 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LAB06_IDNP_SP">
         <activity
+            android:name=".MenuActivity"
+            android:screenOrientation="portrait"
+            android:fitsSystemWindows="true"
+            android:exported="false"
+            android:label="@string/title_activity_menu" />
+        <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
