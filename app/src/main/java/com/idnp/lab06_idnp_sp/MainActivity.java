@@ -20,36 +20,28 @@ public class MainActivity extends AppCompatActivity {
         edit_name = (EditText)findViewById(R.id.nombre);
         edit_correo = (EditText)findViewById(R.id.correo);
         edit_dni = (EditText)findViewById(R.id.dni);
-        s1 = getSharedPreferences("datos",Context.MODE_PRIVATE);
-        /*
-        edit_name.setText(s1.getString("name",""));
-        edit_correo.setText(s1.getString("email",""));
-        edit_dni.setText(s1.getString("dni",""));*/
+        /*Inicialización de la clase manejadora de preferencias de la aplicación*/
+        SharedPefManager.init(getApplicationContext());
     }
-
+    /*Boton para guardar los datos registrados en el formulario*/
     public void Continuar(View view){
 
         Intent i = new Intent(this, MenuActivity.class);
-        guardarSP();
+        String name = edit_name.getText().toString();
+        String email = edit_correo.getText().toString();
+        String dni = edit_dni.getText().toString();
+        SharedPefManager.write(SharedPefManager.NAME,name);
+        SharedPefManager.write(SharedPefManager.EMAIL,email);
+        SharedPefManager.write(SharedPefManager.DNI,dni);
         startActivity(i);
     }
-
+    /*Método para acceder al perfil sin registrar datos
+    * sirve para verificar que el retorno de datos de las preferencias
+    * de usuario funcionan.*/
     public void SinRegistrar(View view){
 
         Intent i = new Intent(this, MenuActivity.class);
-        //guardarSP();
         startActivity(i);
-    }
-
-    public void guardarSP(){
-        SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
-        SharedPreferences.Editor obj_editor = preferencias.edit();
-        obj_editor.putString("name",edit_name.getText().toString());
-        obj_editor.putString("email",edit_correo.getText().toString());
-        obj_editor.putString("dni",edit_dni.getText().toString());
-
-        obj_editor.commit();
-        finish();
     }
 
 }
