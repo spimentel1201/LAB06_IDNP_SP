@@ -93,4 +93,15 @@
         android:textColor="#040404"
         android:onClick="Continuar"/>
 
+    <Button
+        android:id="@+id/sinregistrar"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:textAlignment="center"
+        android:background="@drawable/rounded_border"
+        android:text="Sin Registrar"
+        android:textColor="#040404"
+        android:onClick="SinRegistrar"/>
+
 </androidx.appcompat.widget.LinearLayoutCompat>

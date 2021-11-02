@@ -20,6 +20,7 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+    private SharedPreferences s1;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -28,13 +29,13 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        obtenerSharedPreferences();
         final TextView textView = binding.textHome;
         final TextView textView2 = binding.textCorreo;
         final TextView textView3 = binding.textDni;
         //pruebas
         //edit_name = (EditText)findViewById(R.id.nombre);
-        SharedPreferences s1 = this.getActivity().getSharedPreferences("datos", Context.MODE_PRIVATE);
+        //SharedPreferences s1 = this.getActivity().getSharedPreferences("datos", Context.MODE_PRIVATE);
         //textView.setText(s1.getString("name","")); --> no funciona
         //edit_name.setText(s1.getString("name","")); --> no funciona
         /*-------------------------------------------------------------------------------*/
@@ -54,5 +55,10 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public SharedPreferences obtenerSharedPreferences(){
+        s1 = this.getActivity().getSharedPreferences("datos", Context.MODE_PRIVATE);
+        return s1;
     }
 }
